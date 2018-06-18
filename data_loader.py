@@ -17,7 +17,7 @@ class Data_Loader():
         if centercrop:
             options.append(transforms.CenterCrop(160))
         if resize:
-            options.append(transforms.Resize((self.imsize,self.imsize)))
+            options.append(transforms.Resize((self.imsize, self.imsize)))
         if totensor:
             options.append(transforms.ToTensor())
         if normalize:
@@ -32,9 +32,8 @@ class Data_Loader():
 
     def load_celeb(self):
         transforms = self.transform(True, True, True, True)
-        dataset = dsets.ImageFolder(self.path+'/CelebA', transform=transforms)
+        dataset = dsets.ImageFolder(self.path + '/CelebA', transform=transforms)
         return dataset
-
 
     def loader(self):
         if self.dataset == 'lsun':
@@ -43,9 +42,8 @@ class Data_Loader():
             dataset = self.load_celeb()
 
         loader = torch.utils.data.DataLoader(dataset=dataset,
-                                              batch_size=self.batch,
-                                              shuffle=self.shuf,
-                                              num_workers=2,
-                                              drop_last=True)
+                                             batch_size=self.batch,
+                                             shuffle=self.shuf,
+                                             num_workers=2,
+                                             drop_last=True)
         return loader
-
