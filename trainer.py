@@ -207,7 +207,7 @@ class Trainer(object):
         print(self.D)
 
     def build_tensorboard(self):
-        from logger import Logger
+        from logging import Logger
         self.logger = Logger(self.log_path)
 
     def load_pretrained_model(self):
